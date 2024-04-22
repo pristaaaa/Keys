@@ -3,28 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram-Live-Cric-Hd</title>
-    <link href="https://telegra.ph/file/9a807a5a1387cd5e371fe.jpg" rel="icon" type="image/x-icon">
+    <title>Encoded Playlist</title>
 </head>
 <body>
-    <h1>Live Crichd</h1>
-    <p>Welcome to Live Crichd. Here you'll find exciting cricket updates and more!</p>
-
     <script>
-        // Get a random number between 0 and 1
-        const randomNum = Math.random();
+        // Function to encode URL to Base64
+        function encodeURL(url) {
+            return btoa(url);
+        }
+
+        // Function to encode logo and name to Base64
+        function encodeInfo(logo, name) {
+            return btoa(JSON.stringify({ logo: logo, name: name }));
+        }
+
+        // Function to decode Base64 URL
+        function decodeURL(encodedUrl) {
+            return atob(encodedUrl);
+        }
+
+        // Function to decode Base64 logo and name
+        function decodeInfo(encodedInfo) {
+            return JSON.parse(atob(encodedInfo));
+        }
+
+        // Example data for 10 channels
+        var channels = [
+            { logo: 'https://example.com/logo1.png', name: 'Channel 1', url: 'http://159.89.166.210:5000/ch.mpd?id=24%7CdrmScheme=clearkey&drmLicense=lIvu3h74VkqGJjcVpYxu1w:gHVwqoqia90xO49esgyC/g' },
+            { logo: 'https://example.com/logo2.png', name: 'Channel 2', url: 'http://159.89.166.210:5000/ch.mpd?id=24%7CdrmScheme=clearkey&drmLicense=lIvu3h74VkqGJjcVpYxu1w:gHVwqoqia90xO49esgyC/g' },
+            // Add entries for other channels similarly
+        ];
+
+        // Encode and combine logo, name, and URL for each channel
+        var playlistEntries = '';
+        channels.forEach(function(channel) {
+            var encodedLogoName = encodeInfo(channel.logo, channel.name);
+            var encodedUrl = encodeURL(channel.url);
+            var playlistEntry = '#EXTINF:-1 tvg-logo="' + encodedLogoName + '" group-title="Sports",' + encodedLogoName + '\n' + encodedUrl + '\n';
+            playlistEntries += playlistEntry;
+        });
+
+        // Display the playlist entries
+        console.log(playlistEntries);
         
-        // Define your URLs
-        const url1 = "https://whatsapp.com/channel/0029Va8n3I03wtbCZgOSPi0h";
-        const url2 = "https://t.me/+FJ3FDd6t2DAyNDBl";
-        
-        // Choose URL based on random number
-        const redirectUrl = randomNum < 0.5 ? url1 : url2;
-        
-        // Redirect to chosen URL
-        window.location.href = redirectUrl;
+        // Decode the logo, name, and URL of the first channel (for demonstration purposes)
+        var firstChannel = channels[0];
+        var decodedLogoName = decodeInfo(firstChannel.logo, firstChannel.name);
+        var decodedUrl = decodeURL(firstChannel.url);
+
+        // Display the decoded logo, name, and URL
+        console.log(decodedLogoName); // This will be the decoded logo and name of the first channel
+        console.log(decodedUrl); // This will be the decoded URL of the first channel
     </script>
-  #EXTINF:-1 group-title="" tvg-logo="https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-8301-j7hc0820-v1/imageContent-8301-j7hc0820-m1.png" ,Star Sports Hindi - @livecrichdd
-http://159.89.166.210:5000/ch.mpd?id=24%7CdrmScheme=clearkey&drmLicense=lIvu3h74VkqGJjcVpYxu1w:gHVwqoqia90xO49esgyC/g
 </body>
 </html>
