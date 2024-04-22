@@ -1,7 +1,3 @@
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
-
 // Define an object with clearkeys for different content IDs
 const clearkeys = {
   '24': 'gHVwqoqia90xO49esgyC/g:lIvu3h74VkqGJjcVpYxu1w',
@@ -33,19 +29,19 @@ async function handleRequest(request) {
   // Access is allowed
   if (validateAccess()) {
     // Retrieve the content ID from the query string
-    const url = new URL(request.url)
-    const contentID = url.searchParams.get('contentID')
+    const url = new URL(request.url);
+    const contentID = url.searchParams.get('id');
 
     // Check if the content ID exists in the clearkeys object
     if (contentID && clearkeys[contentID]) {
       // Content ID found, retrieve the clearkey
-      const clearkey = clearkeys[contentID]
-      
+      const clearkey = clearkeys[contentID];
+
       // Return the clearkey
-      return new Response(clearkey)
+      return new Response(clearkey);
     } else {
       // Content ID not found
-      return new Response('Invalid content ID.', { status: 400 })
+      return new Response('Invalid content ID.', { status: 400 });
     }
   } else {
     // Access is not allowed, redirect to Telegram channel
