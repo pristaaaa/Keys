@@ -31,4 +31,5 @@
         </clearkeys>
     </stream>
     <hdnea value="hdnea=exp=1713763987~acl=/*~hmac=e71a326ce2d807243c5df86d672204d185926d950b7b23b2fe49d89a540c9015" validity="10 minutes"/>
+    <hmac>e71a326ce2d807243c5df86d672204d185926d950b7b23b2fe49d89a540c9015</hmac>
 </channel>
