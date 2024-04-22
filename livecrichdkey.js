@@ -49,3 +49,7 @@ async function handleRequest(request) {
     return Response.redirect(telegramChannelURL, 302);
   }
 }
+
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request));
+});
