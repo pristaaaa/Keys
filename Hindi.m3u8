@@ -1,0 +1,4 @@
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-STREAM-INF:BANDWIDTH=3460022,RESOLUTION=1920x1080,CODECS="avc1.4d0028,mp4a.40.34"
+chunks.php?url=http://firetvnew.ddns.net:8081/rps/starhindi/chunks.m3u8&nimblesessionid=1116273&wmsAuthSign=c2VydmVyX3RpbWU9NS80LzIwMjQgODoyNzo1OSBBTSZoYXNoX3ZhbHVlPWhwVkVuYzdJMXlMSTlVQkd0NXphTWc9PSZ2YWxpZG1pbnV0ZXM9Mg==
